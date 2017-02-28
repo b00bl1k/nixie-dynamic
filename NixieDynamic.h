@@ -37,6 +37,7 @@ public:
     void setDigits(uint8_t *, uint8_t, uint8_t);
     void setNumber(uint32_t);
     uint32_t getNumber(void);
+    void clear(void);
     void loop(uint32_t);
 };
 

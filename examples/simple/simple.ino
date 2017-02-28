@@ -14,14 +14,22 @@ void setup()
 void loop()
 {
     static uint32_t tSec;
-    uint32_t t = millis();
+    uint32_t t;
 
     /* Indication */
-    timer.loop(100);
+    if (timer.getNumber() < 30) {
+        timer.loop(100);
 
-    if (t - tSec >= 1000) {
-        /* Every second */
-        timer.setNumber(timer.getNumber() + 1);
-        tSec = t;
+        t = millis();
+        if (t - tSec >= 1000) {
+            /* Every second */
+            uint32_t counter = timer.getNumber() + 1;
+            timer.setNumber(counter);
+            tSec = t;
+
+            /* Stop indication after 30 seconds */
+            if (counter == 30)
+                timer.clear();
+        }
     }
 }

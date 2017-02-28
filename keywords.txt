@@ -4,6 +4,7 @@ Nixie	KEYWORD2
 setDigits	KEYWORD2
 setNumber	KEYWORD2
 getNumber	KEYWORD2
+clear	KEYWORD2
 
 begin	KEYWORD3
 loop	KEYWORD3

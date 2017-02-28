@@ -27,16 +27,7 @@ Nixie::Nixie(uint8_t aPin, uint8_t bPin, uint8_t cPin, uint8_t dPin)
 
 void Nixie::begin()
 {
-    for (int pin = 0; pin < sizeof(decoder); pin++) {
-        pinMode(decoder[pin], OUTPUT);
-        digitalWrite(decoder[pin], HIGH);
-    }
-
-    for (int pin = 0; pin < digitsNum; pin++) {
-        pinMode(digits[pin], OUTPUT);
-        digitalWrite(digits[pin], KEY_OFF);
-    }
-
+    clear();
     cTime = micros();
     cDigit = 0;
     cDiv = 1;
@@ -73,6 +64,19 @@ void Nixie::setNumber(uint32_t value)
 uint32_t Nixie::getNumber()
 {
     return number;
+}
+
+void Nixie::clear()
+{
+    for (int pin = 0; pin < sizeof(decoder); pin++) {
+        pinMode(decoder[pin], OUTPUT);
+        digitalWrite(decoder[pin], HIGH);
+    }
+
+    for (int pin = 0; pin < digitsNum; pin++) {
+        pinMode(digits[pin], OUTPUT);
+        digitalWrite(digits[pin], KEY_OFF);
+    }
 }
 
 void Nixie::loop(uint32_t interval)
